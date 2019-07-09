@@ -1,0 +1,286 @@
+spec = 1
+    SPUid = 1
+    SKUid = 1
+    optid = 1
+    # 分类
+    catagory.objects.create(id=1,name='手机')
+    catagory.objects.create(id=2,name='数码')
+    catagory.objects.create(id=3,name='家电')
+    catagory.objects.create(id=4,name='耳机')
+    catagory.objects.create(id=5,name='电脑')
+    # 商家
+    store.objects.create(1,'正义叔叔的小屋','')
+    
+    # SPU
+    # SPU-手机
+    SPU.objects.create(SPU_id = SPUid,name='华为P30',description='',store_id=1)
+    #华为P30的SKU
+    SKU.objects.create(SKU_id = SKUid,price=3988,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=3988,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=4288,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=4288,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=4588,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=4588,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    options.objects.create(opt_id=optid,name='天空之境',spec_id=spec)
+    specifies.objects.create(1,optid)
+    specifies.objects.create(2,optid)
+    specifies.objects.create(3,optid)
+    optid = optid+1
+    options.objects.create(opt_id=optid,name='极光色',spec_id=spec)
+    specifies.objects.create(4,optid)
+    specifies.objects.create(5,optid)
+    specifies.objects.create(6,optid)
+    optid = optid+1
+    spec = spec+1
+
+    specification.objects.create(spec_id=spec,name='存储')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    options.objects.create(opt_id=optid,name='8+64GB',spec_id=spec)
+    specifies.objects.create(1,optid)
+    specifies.objects.create(2,optid)
+    optid = optid+1
+    options.objects.create(opt_id=optid,name='8+128GB',spec_id=spec)
+    specifies.objects.create(3,optid)
+    specifies.objects.create(4,optid)
+    optid = optid+1
+    options.objects.create(opt_id=optid,name='8+256GB',spec_id=spec)
+    specifies.objects.create(5,optid)
+    specifies.objects.create(6,optid)
+    optid = optid+1
+    spec = spec+1
+
+
+
+    SPUid = SPUid+1
+
+
+    SPU.objects.create(SPU_id = SPUid,name='荣耀V20',description='',store_id=1)
+    # 荣耀V20的SKU
+    SKU.objects.create(SKU_id = SKUid,price=2699,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=2699,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=2699,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=2899,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=2899,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    SKU.objects.create(SKU_id = SKUid,price=2899,amount=1000,SPU_id=SPUid)
+    SKUid = SKUid+1
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    options.objects.create(opt_id=optid,name='幻夜黑',spec_id=spec)
+    specifies.objects.create(7,optid)
+    specifies.objects.create(8,optid)
+    specifies.objects.create(9,optid)
+    optid = optid+1
+    options.objects.create(opt_id=optid,name='幻影蓝',spec_id=spec)
+    specifies.objects.create(10,optid)
+    specifies.objects.create(11,optid)
+    specifies.objects.create(12,optid)
+    optid = optid+1
+
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='存储')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    options.objects.create(opt_id=optid,name='6+128GB',spec_id=spec)
+    specifies.objects.create(7,optid)
+    specifies.objects.create(8,optid)
+    optid = optid+1
+    options.objects.create(opt_id=optid,name='8+128GB',spec_id=spec)
+    specifies.objects.create(9,optid)
+    specifies.objects.create(10,optid)
+    optid = optid+1
+    options.objects.create(opt_id=optid,name='8+256GB',spec_id=spec)
+    specifies.objects.create(11,optid)
+    specifies.objects.create(12,optid)
+    optid = optid+1
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='iPhone X',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='存储')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='小米9',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='存储')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='一加7 Pro',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='存储')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    for num in range(1,5):
+        cata_SPU.objects.create(name='手机',SPU_id=num)
+
+    # SPU-数码产品
+    SPU.objects.create(SPU_id = SPUid,name='富士拍立得mini9',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='佳能EOS M50微单套机',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='索尼微单 A6000L',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='尼康D5300入门单反相机',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    for num in range(6,9):
+        cata_SPU.objects.create(name='数码',SPU_id=num)
+        
+    # SPU-家电
+    SPU.objects.create(SPU_id = SPUid,name='苏泊尔SW-17S62A电热水壶',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='小米米家空气净化器2S',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+    
+    SPU.objects.create(SPU_id = SPUid,name='东菱KF7001意式咖啡机',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='九阳JYZ-E3C榨汁机JYZ-E3C',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    for num in range(10,13):
+        cata_SPU.objects.create(name='家电',SPU_id=num)
+    # SPU-耳机
+    SPU.objects.create(SPU_id = SPUid,name='华为无线蓝牙耳机freebuds2 pro',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='Apple AirPods 无线耳机',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='Beats solo3 wireless无线耳机',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='索尼 WH-1000XM3 无线耳机',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='颜色')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    for num in range(14,17):
+        cata_SPU.objects.create(name='相机',SPU_id=num)
+
+    # SPU-电脑
+    SPU.objects.create(SPU_id = SPUid,name='宁美国度i5 游戏主机',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='惠普 光影精灵5',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    SPU.objects.create(SPU_id = SPUid,name='苹果 iPad 2018',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+    
+    SPU.objects.create(SPU_id = SPUid,name='苹果 MacBook Air2018',description='',store_id=1)
+    specification.objects.create(spec_id=spec,name='套餐')
+    SPU_spec.objects.create(SPU_id=SPUid,spec_id=spec)
+    spec = spec+1
+    SPUid = SPUid+1
+
+    for num in range(18,21):
+        cata_SPU.objects.create(name='电脑',SPU_id=num)
