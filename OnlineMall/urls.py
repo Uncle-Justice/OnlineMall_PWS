@@ -15,14 +15,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import main.views as main_views
+import user.views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/',main_views.login),
-    path('catagories/',main_views.catagorieslist),
-    # path('catagories/<str:cname>',main_views.getCatagory),
-    path('catagoriesById/<str:cid>',main_views.getCatagoryById),
-    path('SPU/',main_views.SPUlist),
-    path('SPU/<str:uuid>',main_views.getSPU),
+    path('token/user',user_views.login),
+    path('token/verify',user_views.verify),
+    path('category/all',main_views.catagorieslist),
+    path('product/by_category',main_views.getCatagory),
+    path('product/recent',main_views.SPUlist),
+    path('product/<str:uuid>',main_views.getSPU),
     path('store/',main_views.storeList),
     path('store/<str:id>',main_views.getStore),
+    path('getAddress',main_views.getAddress),
+    path('submitAddress',main_views.submitAddress),
+    path('order',main_views.doOrder),
 ]

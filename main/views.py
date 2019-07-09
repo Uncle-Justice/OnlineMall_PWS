@@ -27,15 +27,15 @@ def catagorieslist(request):
         l.append({'id':i.id,'name':i.name,'description':'','img':{'url':''}})
     return HttpResponse(json.dumps(l,ensure_ascii=False))
 
-def getCatagory(request,cname):
+def getCatagory(request):
     l=[]
+    cname=request.GET.get('id',None)
+    if cname==None:
+        return HttpResponse("error")
     try:
-        catagory=models.catagory.objects.get(name=cname)
+        catagory=models.catagory.objects.get(id=cname)
         for i in catagory.spu_set.all():
-            for j in i.sku_set.all():
-                for k in j.img_set.all():
-                    URL= k.URL
-            l.append({'name':i.name,'store':i.belong.name,'main_img_url':URL})
+            l.append({'name':i.name,'store':i.belong.name,'id':str(i.SPU_id)})
     except ObjectDoesNotExist:
         l['error']='Catagory does not exist'
     return HttpResponse(json.dumps(l,ensure_ascii=False))
@@ -57,41 +57,53 @@ def getCatagoryById(request,cid):
 def SPUlist(request):
     l=[]
     for i in models.SPU.objects.all():
+        minprice=999999999
+        URL=''
+        try:
+            URL=i.sku_set.all()[0].img_set.all()[0].URL
+            URL='http://127.0.0.1:8000/static/images/'+ URL
+        except:
+            pass
         for j in i.sku_set.all():
-                for k in j.img_set.all():
-                    URL= k.URL
-        l.append({'id':str(i.SPU_id),'name':i.name,'price':'','stock':'','main_img_url':'http://127.0.0.1:8000/static/images/'+URL})
+            minprice=min(minprice,j.price)
+        l.append({'id':str(i.SPU_id),'name':i.name,'price':minprice,'stock':'','main_img_url':URL})
     return HttpResponse(json.dumps(l,ensure_ascii=False))
 
-# 改动
+
 def getSPU(request,uuid):
     l=dict()
     try:
+        
         spu=models.SPU.objects.get(SPU_id=uuid)
-        for j in spu.sku_set.all():
-                for k in j.img_set.all():
-                    URL= k.URL
+        URL=spu.sku_set.all()[0].img_set.all()[0].URL
+        URL='http://127.0.0.1:8000/static/images/'+ URL
         l['id']=str(spu.SPU_id)
         l['name']=spu.name
-        l['price']=''
         l['properties']=spu.description
         l['summary']=spu.description
         l['store']=spu.belong.name
-        l['main_img_url'] = 'http://127.0.0.1:8000/static/images/'+URL
+        l['main_img_url'] = URL
         l['SKU']=[]
+        l['specification']=[]
+        for i in spu.spec.all():
+            tmp={'name':i.name}
+            tmp['options']=[]
+            for j in i.option_set.all():
+                tmp['options'].append(j.name)
+            l['specification'].append(tmp)
+        minprice=999999999999
         for i in spu.sku_set.all():
-            for j in i.img_set.all():
-                    URL= k.URL
-            singleSKU={'SKU_id':str(i.SKU_id),'price':i.price,'stock':i.amount,'main_img_url':'http://127.0.0.1:8000/static/images/'+URL}
+            singleSKU={'SKU_id':str(i.SKU_id),'price':i.price,'stock':i.amount}
             optdict={}
+            minprice=min(minprice,i.price)
             for j in i.options.all():
                 optdict[j.belong.name]=j.name
             singleSKU['option']=optdict
             l['SKU'].append(singleSKU)
+        l['price']=minprice
     except:
         l['error']='SPU does not exist'
     return HttpResponse(json.dumps(l,ensure_ascii=False))
-    
 
 def storeList(request):
     l=[]
@@ -110,4 +122,52 @@ def getStore(request,id):
             singleSKU={'SPU_id':str(i.SPU_id),'name':i.name}
     except:
         l['error']='Store does not exist'
+    return HttpResponse(json.dumps(l,ensure_ascii=False))
+
+def getAddress(request):
+    l=dict()
+    try:
+        l['name']='彭万山'
+        l['provinceName']='湖北省'
+        l['cityName']='洪湖市'
+        l['countyName']='复兴路'
+        l['mobile']='15521332532'
+        l['provinceName']='湖北省'
+        l['detailInfo']='14号'
+        
+    except:
+        l['error']='Address does not exist'
+    return HttpResponse(json.dumps(l,ensure_ascii=False))
+
+def submitAddress(request):
+    try:
+        concat = request.POST
+        postBody = str(request.body, encoding = "utf-8") 
+        uuid = request.META.get("HTTP_TOKEN")
+        models.customer.objects.filter(uuid=uuid).update(address=postBody)
+        return HttpResponse('success submit')   
+        print(postBody)
+        msg='success'
+    except:
+        msg='failed'
+    return HttpResponse(msg)
+
+def doOrder(request):
+
+    concat = request.POST
+    postBody = request.body
+    uuid = request.META.get("HTTP_TOKEN")
+    # 创建order实例，django自动生成orderid,关联用户，前端发的body里面已经有了productid和个数，存进items里
+    print(postBody)
+
+    l=dict()
+ 
+    l['id']='1'
+    l['order_id']='13'
+    l['pass']=1
+    l['countyName']='复兴路'
+    l['mobile']='15521332532'
+    l['provinceName']='湖北省'
+    l['detailInfo']='14号'
+
     return HttpResponse(json.dumps(l,ensure_ascii=False))
