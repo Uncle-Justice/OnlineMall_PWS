@@ -125,19 +125,13 @@ def getStore(request,id):
     return HttpResponse(json.dumps(l,ensure_ascii=False))
 
 def getAddress(request):
-    l=dict()
+    
     try:
-        l['name']='彭万山'
-        l['provinceName']='湖北省'
-        l['cityName']='洪湖市'
-        l['countyName']='复兴路'
-        l['mobile']='15521332532'
-        l['provinceName']='湖北省'
-        l['detailInfo']='14号'
-        
+        uuid = request.META.get("HTTP_TOKEN")
+        address=json.loads(models.customer.objects.get(uuid=uuid).address)
     except:
-        l['error']='Address does not exist'
-    return HttpResponse(json.dumps(l,ensure_ascii=False))
+        address={'msg':'Address does not exist'}
+    return HttpResponse(json.dumps(address,ensure_ascii=False))
 
 def submitAddress(request):
     try:
